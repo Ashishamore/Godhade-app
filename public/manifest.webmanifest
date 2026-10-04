@@ -1,0 +1,11 @@
+{
+  "name": "Godhade Dairy Training",
+  "short_name": "Godhade",
+  "description": "Learn milk processing and start your own profitable unit.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f5f3",
+  "theme_color": "#c2410c",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

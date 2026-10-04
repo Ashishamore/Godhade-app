@@ -1,0 +1,191 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Godhade Dairy Training — design tokens.
+
+   Flat by design: solid fills, hairline borders, one restrained shadow level.
+   No gradients anywhere. Colour carries meaning (brand / positive / warning /
+   critical), never decoration.
+--------------------------------------------------------------------------- */
+@theme {
+  --font-sans: 'Inter', 'Noto Sans Devanagari', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+
+  --color-workspace: var(--c-workspace);
+  --color-canvas: var(--c-canvas);
+  --color-surface: var(--c-surface);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-ink-3: var(--c-ink-3);
+
+  --color-brand: var(--c-brand);
+  --color-brand-hover: var(--c-brand-hover);
+  --color-brand-ink: var(--c-brand-ink);
+  --color-brand-soft: var(--c-brand-soft);
+
+  --color-gold: var(--c-gold);
+  --color-gold-soft: var(--c-gold-soft);
+
+  --color-positive: var(--c-positive);
+  --color-positive-soft: var(--c-positive-soft);
+  --color-warning: var(--c-warning);
+  --color-warning-soft: var(--c-warning-soft);
+  --color-critical: var(--c-critical);
+  --color-critical-soft: var(--c-critical-soft);
+  --color-info: var(--c-info);
+  --color-info-soft: var(--c-info-soft);
+
+  --shadow-card: 0 1px 2px 0 rgb(18 22 19 / 0.05);
+  --shadow-pop: 0 10px 30px -12px rgb(18 22 19 / 0.22);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-fade-up: fade-up 0.3s var(--ease-out-soft) both;
+  --animate-fade-in: fade-in 0.22s var(--ease-out-soft) both;
+  --animate-pop: pop 0.2s var(--ease-out-soft) both;
+
+  /* Container-query breakpoints: the app lays itself out from the width of its
+     container, so the same code drives a real phone and the desktop preview. */
+  --container-wide: 40rem; /* 640px */
+  --container-desk: 64rem; /* 1024px */
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translate3d(0, 8px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+:root {
+  /* Warm neutrals to sit under the orange brand. */
+  --c-workspace: #e8e6e4;
+  --c-canvas: #f6f5f3;
+  --c-surface: #ffffff;
+  --c-muted: #f1efed;
+  --c-line: #e4e1dd;
+  --c-line-strong: #d2cec9;
+
+  --c-ink: #161412;
+  --c-ink-2: #5f5955;
+  --c-ink-3: #756d68;
+
+  /* Brand orange. 5.18:1 on white, so it works as text and as a button fill. */
+  --c-brand: #c2410c;
+  --c-brand-hover: #9a3412;
+  --c-brand-ink: #ffffff;
+  --c-brand-soft: #fbede6;
+
+  --c-gold: #8a6508;
+  --c-gold-soft: #fbf2de;
+
+  /* Success keeps its own green — it must never read as the brand. */
+  --c-positive: #15724a;
+  --c-positive-soft: #e7f1ec;
+  --c-warning: #8a6508;
+  --c-warning-soft: #fbf2de;
+  --c-critical: #b3261e;
+  --c-critical-soft: #fbeae9;
+  --c-info: #1b4f8a;
+  --c-info-soft: #e8f0f9;
+
+  color-scheme: light;
+}
+
+.dark {
+  --c-workspace: #151312;
+  --c-canvas: #0b0a09;
+  --c-surface: #171514;
+  --c-muted: #211e1c;
+  --c-line: #2a2724;
+  --c-line-strong: #3b3734;
+
+  --c-ink: #f2efed;
+  --c-ink-2: #a9a29d;
+  --c-ink-3: #8a827c;
+
+  --c-brand: #fb923c;
+  --c-brand-hover: #fdba74;
+  --c-brand-ink: #2a1206;
+  --c-brand-soft: #2a1608;
+
+  --c-gold: #d8a44a;
+  --c-gold-soft: #241f0d;
+
+  --c-positive: #46a67a;
+  --c-positive-soft: #10241b;
+  --c-warning: #d8a44a;
+  --c-warning-soft: #241f0d;
+  --c-critical: #e8705f;
+  --c-critical-soft: #2a1412;
+  --c-info: #6ba3dd;
+  --c-info-soft: #101d2a;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  button, [role='button'] { -webkit-tap-highlight-color: transparent; }
+
+  :focus-visible {
+    outline: 2px solid var(--c-brand);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* Device-safe insets. The phone frame overrides --inset-* to simulate hardware;
+   on real devices they fall back to env(). The bare versions win the cascade, so
+   use the -4 variants where an element also needs its own padding. */
+@utility pb-safe { padding-bottom: var(--inset-b, env(safe-area-inset-bottom, 0px)); }
+@utility pt-safe { padding-top: var(--inset-t, env(safe-area-inset-top, 0px)); }
+@utility pb-safe-4 {
+  padding-bottom: max(1rem, var(--inset-b, env(safe-area-inset-bottom, 0px)));
+}
+@utility pt-safe-4 {
+  padding-top: max(1rem, var(--inset-t, env(safe-area-inset-top, 0px)));
+}
+
+/* List entrance: style={{ '--i': index }} */
+@utility stagger {
+  animation: var(--animate-fade-up);
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
