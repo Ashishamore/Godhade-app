@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from '../../components/appRouter'
 import {
   AlertTriangle, ArrowRight, Camera, CheckCircle2, ChevronLeft, Headphones, Lock,
   Pause, Play, ShieldCheck, TrendingUp,

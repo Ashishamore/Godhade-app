@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from '../../components/appRouter'
 import { CheckCircle2, ChevronRight, Clock, Lock, SearchX, Star, Users } from 'lucide-react'
 import Screen, { ScreenHeader } from '../../components/Screen'
 import useI18n from '../../i18n'
@@ -141,7 +141,7 @@ export default function Courses() {
               }
             />
           ) : (
-            <div className="space-y-3 @wide:grid @wide:grid-cols-2 @wide:gap-3 @wide:space-y-0">
+            <div className="space-y-3 @wide:grid @wide:grid-cols-2 @wide:gap-3 @wide:space-y-0 @desk:grid-cols-3">
               {list.map((c, i) => (
                 <CourseRow key={c.id} course={c} index={i} />
               ))}
@@ -164,8 +164,8 @@ export default function Courses() {
 
         {/* ------------------------------------------------------- recipes --- */}
         {tab === 'recipes' && (
-          <div className="space-y-3 @wide:grid @wide:grid-cols-2 @wide:gap-3 @wide:space-y-0">
-            <p className="text-[12.5px] leading-relaxed text-ink-3 @wide:col-span-2">
+          <div className="space-y-3 @wide:grid @wide:grid-cols-2 @wide:gap-3 @wide:space-y-0 @desk:grid-cols-3">
+            <p className="text-[12.5px] leading-relaxed text-ink-3 @wide:col-span-2 @desk:col-span-3">
               {pick({
                 en: 'Step-by-step written recipes with exact quantities, timings and costing. Buy once, keep forever.',
                 hi: 'सटीक मात्रा, समय और लागत के साथ लिखित रेसिपी। एक बार ख़रीदें, हमेशा रखें।',

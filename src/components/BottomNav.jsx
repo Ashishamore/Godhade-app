@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink } from './appRouter'
 import { TABS } from './nav'
 import { Dot } from './ui'
 import useI18n from '../i18n'
@@ -16,7 +16,7 @@ export default function BottomNav({ className = '' }) {
         className,
       ].join(' ')}
     >
-      <ul className="mx-auto flex max-w-[680px] items-stretch">
+      <ul className="mx-auto flex max-w-[680px] items-stretch @desk:max-w-[960px]">
         {TABS.map(({ to, label, icon: Icon, badge, end }) => (
           <li key={to} className="flex-1">
             <NavLink

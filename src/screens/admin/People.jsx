@@ -63,7 +63,7 @@ export function Students() {
           {list.map((s) => (
             <tr key={s.id} className="hover:bg-muted">
               <Td>
-                <Link to={`/admin/students/${s.id}`} className="flex items-center gap-2.5">
+                <Link to={`/admin/web/students/${s.id}`} className="flex items-center gap-2.5">
                   <Avatar name={s.name} size="sm" />
                   <span className="min-w-0">
                     <span className="flex items-center gap-2">
@@ -112,7 +112,7 @@ export function StudentDetail() {
       <Panel title="Not found">
         <p className="text-[13px] text-ink-2">
           No student with that id.{' '}
-          <Link to="/admin/students" className="font-semibold text-brand">
+          <Link to="/admin/web/students" className="font-semibold text-brand">
             Back to list
           </Link>
         </p>
@@ -123,7 +123,7 @@ export function StudentDetail() {
   return (
     <div className="space-y-4">
       <Link
-        to="/admin/students"
+        to="/admin/web/students"
         className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink-2 hover:text-ink"
       >
         <ArrowLeft className="size-4" strokeWidth={2.2} />
@@ -256,7 +256,7 @@ export function Support() {
           bodyClass=""
           action={
             <Link
-              to={`/admin/students/${active.studentId}`}
+              to={`/admin/web/students/${active.studentId}`}
               className="shrink-0 text-[12.5px] font-semibold text-brand"
             >
               Open profile

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from '../../components/appRouter'
 import {
   ArrowRight, CheckCircle2, Circle, Clock, Lock, PlayCircle, ShieldCheck, Star,
   TrendingUp, Users,

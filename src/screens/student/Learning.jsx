@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../../components/appRouter'
 import { Award, BookMarked, ChevronRight, GraduationCap, Lock, Phone } from 'lucide-react'
 import Screen, { ScreenHeader } from '../../components/Screen'
 import useI18n from '../../i18n'
@@ -99,7 +99,7 @@ export default function Learning() {
               }
             />
           ) : (
-            <div className="space-y-3 @wide:grid @wide:grid-cols-2 @wide:gap-3 @wide:space-y-0">
+            <div className="space-y-3 @wide:grid @wide:grid-cols-2 @wide:gap-3 @wide:space-y-0 @desk:grid-cols-3">
               {list.map((c, i) => (
                 <CourseItem key={c.id} course={c} index={i} />
               ))}

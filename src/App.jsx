@@ -1,11 +1,13 @@
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Compass } from 'lucide-react'
 
+import { Link } from './components/appRouter'
 import AppShell from './components/AppShell'
 import DeviceFrame from './components/DeviceFrame'
 import ViewToolbar from './components/ViewToolbar'
 import AdminShell from './components/admin/AdminShell'
 import { Button, EmptyState } from './components/ui'
+import useViewMode, { ADMIN_BASE, BASES } from './hooks/useViewMode'
 
 import Home from './screens/student/Home'
 import Courses from './screens/student/Courses'
@@ -68,6 +70,26 @@ function StudentApp() {
   )
 }
 
+/* Anything without a full /<role>/<view> prefix — '/', '/student', '/admin',
+   older links like '/courses' or '/admin/students' — is sent to the right
+   place. Students land in their last-used view; '?view=mobile' / '?view=web'
+   picks one explicitly. */
+function Redirect() {
+  const { pathname, search } = useLocation()
+  const { mode } = useViewMode()
+
+  const admin = pathname.match(/^\/admin(\/.*)?$/)
+  if (admin) return <Navigate to={ADMIN_BASE + (admin[1] ?? '') + search} replace />
+
+  const params = new URLSearchParams(search)
+  const wanted = params.get('view')
+  params.delete('view')
+  const base = BASES[wanted === 'mobile' || wanted === 'web' ? wanted : mode]
+  const rest = pathname.replace(/^\/student(?=\/|$)/, '').replace(/^\/$/, '')
+  const query = params.toString()
+  return <Navigate to={base + rest + (query ? '?' + query : '')} replace />
+}
+
 export default function App() {
   const { pathname } = useLocation()
   const isAdmin = pathname.startsWith('/admin')
@@ -75,7 +97,7 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/admin" element={<AdminShell />}>
+        <Route path={ADMIN_BASE} element={<AdminShell />}>
           <Route index element={<Dashboard />} />
           <Route path="admissions" element={<Admissions />} />
           <Route path="batches" element={<Batches />} />
@@ -89,7 +111,9 @@ export default function App() {
           <Route path="settings" element={<Settings />} />
         </Route>
 
-        <Route path="/*" element={<StudentApp />} />
+        <Route path={BASES.mobile + '/*'} element={<StudentApp />} />
+        <Route path={BASES.web + '/*'} element={<StudentApp />} />
+        <Route path="*" element={<Redirect />} />
       </Routes>
 
       {/* The student app renders its own toolbar inside DeviceFrame. */}

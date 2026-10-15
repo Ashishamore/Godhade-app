@@ -8,11 +8,20 @@ Two applications live in one codebase:
 
 | | |
 |---|---|
-| **Student app** | Mobile-first, five bottom tabs. `/` |
-| **Admin console** | Web-only, side navigation. `/admin` |
+| **Student app — phone** | Inside a simulated handset. `/student/mobile` |
+| **Student app — web** | Full browser width. `/student/web` |
+| **Admin console** | Web-only, side navigation. `/admin/web` |
 
-On a desktop the toolbar in the bottom-right switches between them, and switches the
-student app between full browser width and a simulated handset.
+URLs are `/<role>/<view>/…`. Every student screen exists under both views —
+`/student/mobile/courses`, `/student/web/course/khawa` — so a link opens in the view it
+was copied from. `/`, `/student` and old unprefixed links redirect to the last-used view
+(`?view=mobile` or `?view=web` picks one); `/admin/…` redirects to `/admin/web/…`.
+On a desktop the toolbar in the bottom-right switches between the apps and between the
+two views, keeping you on the same screen.
+
+Screens link with app-absolute paths (`to="/courses"`); import `Link`, `NavLink` and
+`useNavigate` from `src/components/appRouter.jsx` rather than `react-router-dom` so the
+current prefix is added for you.
 
 Nothing is persisted and no payment is taken. All data is demo data in `src/data/`.
 

@@ -184,7 +184,7 @@ export const suggestions = [
     title: { en: '2 applicants are inside your 60 km rule', hi: '2 आवेदक आपके 60 किमी नियम के अंदर', mr: '२ अर्जदार तुमच्या ६० किमी नियमात' },
     body: { en: 'Ramesh Jadhav (22 km) and one more are from Kolhapur. Review before approving.', hi: 'रमेश जाधव (22 किमी) और एक और कोल्हापुर से हैं।', mr: 'रमेश जाधव (२२ किमी) व आणखी एक कोल्हापूरचे आहेत.' },
     action: { en: 'Review applications', hi: 'आवेदन देखें', mr: 'अर्ज पाहा' },
-    to: '/admin/admissions',
+    to: '/admin/web/admissions',
   },
   {
     id: 'sg2',
@@ -192,7 +192,7 @@ export const suggestions = [
     title: { en: '38 students finished 2+ courses', hi: '38 विद्यार्थियों ने 2+ कोर्स पूरे किए', mr: '३८ विद्यार्थ्यांनी २+ कोर्स पूर्ण केले' },
     body: { en: 'They now see the residential upsell video. Last month this converted 11 seats.', hi: 'उन्हें अब आवासीय अपसेल वीडियो दिखता है। पिछले माह 11 सीटें बिकीं।', mr: 'त्यांना आता निवासी अपसेल व्हिडिओ दिसतो. गेल्या महिन्यात ११ जागा विकल्या.' },
     action: { en: 'Send WhatsApp nudge', hi: 'व्हाट्सएप भेजें', mr: 'व्हॉट्सअ‍ॅप पाठवा' },
-    to: '/admin/marketing',
+    to: '/admin/web/marketing',
   },
   {
     id: 'sg3',
@@ -200,7 +200,7 @@ export const suggestions = [
     title: { en: 'Paneer is your best seller', hi: 'पनीर सबसे ज़्यादा बिका', mr: 'पनीर सर्वाधिक विकला' },
     body: { en: '42 sales this month. A written recipe for it is not published yet.', hi: 'इस माह 42 बिक्री। इसकी लिखित रेसिपी अभी प्रकाशित नहीं।', mr: 'या महिन्यात ४२ विक्री. याची लिखित रेसिपी अजून प्रकाशित नाही.' },
     action: { en: 'Open recipes', hi: 'रेसिपी खोलें', mr: 'रेसिपी उघडा' },
-    to: '/admin/recipes',
+    to: '/admin/web/recipes',
   },
 ]
 

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from './appRouter'
 import { ChevronLeft } from 'lucide-react'
 import { useShell } from './AppShell'
 import { IconButton } from './ui'

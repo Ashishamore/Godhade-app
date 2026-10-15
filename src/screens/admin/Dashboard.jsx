@@ -155,7 +155,7 @@ export default function Dashboard() {
           caption={`${pending.length} to review`}
           bodyClass=""
           action={
-            <Link to="/admin/admissions" className="shrink-0 text-[12.5px] font-semibold text-brand">
+            <Link to="/admin/web/admissions" className="shrink-0 text-[12.5px] font-semibold text-brand">
               Open
             </Link>
           }

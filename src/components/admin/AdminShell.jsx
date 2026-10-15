@@ -15,35 +15,35 @@ const unread = supportQueue.filter((s) => s.unread).length
 export const SECTIONS = [
   {
     label: 'Overview',
-    items: [{ to: '/admin', end: true, label: 'Dashboard', icon: BarChart3 }],
+    items: [{ to: '/admin/web', end: true, label: 'Dashboard', icon: BarChart3 }],
   },
   {
     label: 'Admissions',
     items: [
-      { to: '/admin/admissions', label: 'Applications', icon: UserCheck, badge: pending },
-      { to: '/admin/batches', label: 'Batches', icon: CalendarRange },
+      { to: '/admin/web/admissions', label: 'Applications', icon: UserCheck, badge: pending },
+      { to: '/admin/web/batches', label: 'Batches', icon: CalendarRange },
     ],
   },
   {
     label: 'People',
     items: [
-      { to: '/admin/students', label: 'Students', icon: Users },
-      { to: '/admin/support', label: 'Support', icon: Headphones, badge: unread },
+      { to: '/admin/web/students', label: 'Students', icon: Users },
+      { to: '/admin/web/support', label: 'Support', icon: Headphones, badge: unread },
     ],
   },
   {
     label: 'Content',
     items: [
-      { to: '/admin/courses', label: 'Courses', icon: BookOpen },
-      { to: '/admin/recipes', label: 'Recipes', icon: FileText },
+      { to: '/admin/web/courses', label: 'Courses', icon: BookOpen },
+      { to: '/admin/web/recipes', label: 'Recipes', icon: FileText },
     ],
   },
   {
     label: 'Business',
     items: [
-      { to: '/admin/payments', label: 'Payments', icon: CreditCard },
-      { to: '/admin/marketing', label: 'Marketing', icon: Megaphone },
-      { to: '/admin/settings', label: 'Settings', icon: Settings },
+      { to: '/admin/web/payments', label: 'Payments', icon: CreditCard },
+      { to: '/admin/web/marketing', label: 'Marketing', icon: Megaphone },
+      { to: '/admin/web/settings', label: 'Settings', icon: Settings },
     ],
   },
 ]

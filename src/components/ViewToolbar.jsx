@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { LayoutDashboard, Monitor, Moon, RotateCw, Smartphone, Sun } from 'lucide-react'
-import useViewMode, { DEVICES } from '../hooks/useViewMode'
+import useViewMode, { ADMIN_BASE, DEVICES } from '../hooks/useViewMode'
 import { useAppTheme } from './theme'
 
 function Toggle({ active, onClick, icon: Icon, children, title }) {
@@ -40,7 +40,7 @@ export default function ViewToolbar() {
     <div className="fixed bottom-5 right-5 z-[60] flex items-center gap-1 rounded-xl border border-line bg-surface/95 p-1 shadow-pop backdrop-blur-xl">
       <Toggle
         active={!isAdmin}
-        onClick={() => navigate('/')}
+        onClick={() => navigate(view.base)}
         icon={Smartphone}
         title="Student app"
       >
@@ -48,7 +48,7 @@ export default function ViewToolbar() {
       </Toggle>
       <Toggle
         active={isAdmin}
-        onClick={() => navigate('/admin')}
+        onClick={() => navigate(ADMIN_BASE)}
         icon={LayoutDashboard}
         title="Admin panel"
       >
@@ -92,7 +92,7 @@ export default function ViewToolbar() {
               </select>
               <button
                 type="button"
-                onClick={view.toggleLandscape}
+                onClick={view.rotate}
                 aria-label="Rotate"
                 title="Rotate"
                 className={[

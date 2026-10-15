@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import BottomNav from './BottomNav'
 import { PortalContext } from './portal'
 import { useAppTheme } from './theme'
+import { stripBase } from '../hooks/useViewMode'
 
 const ShellContext = createContext({ scrolled: false, theme: null })
 export const useShell = () => useContext(ShellContext)
@@ -26,7 +27,7 @@ export default function AppShell() {
   // Overlays portal into this element so they stay inside the phone frame.
   const [host, setHost] = useState(null)
 
-  const fullBleed = FULL_BLEED.some((re) => re.test(pathname))
+  const fullBleed = FULL_BLEED.some((re) => re.test(stripBase(pathname)))
 
   useEffect(() => {
     scroller.current?.scrollTo({ top: 0 })
@@ -48,7 +49,7 @@ export default function AppShell() {
             }}
             className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain"
           >
-            <div key={pathname} className="animate-fade-in mx-auto h-full w-full max-w-[560px]">
+            <div key={pathname} className="animate-fade-in mx-auto h-full w-full max-w-[560px] @wide:max-w-[720px] @desk:max-w-[960px]">
               <Outlet />
             </div>
           </main>
